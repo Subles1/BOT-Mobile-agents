@@ -24,11 +24,19 @@ pip install -r bot/requirements.txt
 ```
 
 Set required environment variables and run the applications.
-Only the Telegram bot needs a token:
+Only the Telegram bot needs a token. You can provide it in one of two ways:
+
+1. Export the variable in your shell:
+
+   ```bash
+   export TELEGRAM_BOT_TOKEN=<your bot token>
+   ```
+
+2. Create a `.env` file containing `TELEGRAM_BOT_TOKEN=<your bot token>` and load it (e.g., with `source .env` or using `python-dotenv`).
+
+Then run the services:
 
 ```bash
-export TELEGRAM_BOT_TOKEN=<your bot token>
-
 # run the microservice
 uvicorn p2p_rates_service.main:app --reload
 
