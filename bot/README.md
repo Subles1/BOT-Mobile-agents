@@ -15,7 +15,7 @@ python -m bot
 ```
 
 The bot supports the following commands:
-- `/commission`
+- `/commission` – upload an XLSX report to calculate commissions
 - `/leaderboard`
 - `/faq`
 - `/rates`
