@@ -1,12 +1,21 @@
-# Python
+# Bytecode and caches
 __pycache__/
 *.py[cod]
-
-# Env files
-.env
-
-# Docker
-*.log
-
-clicks.db
 .pytest_cache/
+.mypy_cache/
+
+# Env files and IDE settings
+.env
+.vscode/
+.idea/
+
+# Logs and databases
+*.log
+clicks.db
+*.db
+*.sqlite*
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
