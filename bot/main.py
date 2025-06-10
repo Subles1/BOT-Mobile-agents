@@ -3,6 +3,7 @@ from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 
 from .commission import calculate_commissions
+from .faq import find_answer
 
 
 def get_token() -> str:
@@ -38,7 +39,16 @@ async def leaderboard(update: Update, context: ContextTypes.DEFAULT_TYPE) -> Non
 
 async def faq(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Handle /faq command."""
-    await update.message.reply_text("Visit example.com/faq for answers to common questions.")
+    query = " ".join(context.args)
+    if not query:
+        await update.message.reply_text("Please provide a question after the command.")
+        return
+
+    answer = find_answer(query)
+    if answer:
+        await update.message.reply_text(answer)
+    else:
+        await update.message.reply_text("Sorry, I don't know the answer to that question.")
 
 
 async def rates(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:

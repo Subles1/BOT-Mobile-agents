@@ -17,5 +17,5 @@ python -m bot
 The bot supports the following commands:
 - `/commission` – upload an XLSX report to calculate commissions
 - `/leaderboard`
-- `/faq`
+- `/faq` – ask a question about the service
 - `/rates`
