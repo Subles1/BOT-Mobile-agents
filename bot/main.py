@@ -7,6 +7,8 @@ from .faq import find_answer
 
 
 def get_token() -> str:
+    # TELEGRAM_BOT_TOKEN should come from the environment or a `.env` file.
+    # See the README for setup instructions.
     token = os.getenv("TELEGRAM_BOT_TOKEN")
     if not token:
         raise RuntimeError("TELEGRAM_BOT_TOKEN env var is required")
