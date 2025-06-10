@@ -10,3 +10,6 @@
 
 ## P2P Rates Microservice
 See [p2p_rates_service](p2p_rates_service/README.md) for usage details.
+
+## Telegram Bot
+See [bot](bot/README.md) for usage details.
