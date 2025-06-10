@@ -1,0 +1,14 @@
+[
+  {
+    "question": "How do I reset my password?",
+    "answer": "Use the password reset form at example.com/reset to create a new password."
+  },
+  {
+    "question": "Where can I see my commissions?",
+    "answer": "Upload your XLSX report with /commission to receive a summary of commissions."
+  },
+  {
+    "question": "How do I contact support?",
+    "answer": "Send an email to support@example.com and we will respond shortly."
+  }
+]
