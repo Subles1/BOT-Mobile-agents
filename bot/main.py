@@ -2,6 +2,8 @@ import os
 from telegram import Update
 from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 
+from .commission import calculate_commissions
+
 
 def get_token() -> str:
     token = os.getenv("TELEGRAM_BOT_TOKEN")
@@ -11,8 +13,22 @@ def get_token() -> str:
 
 
 async def commission(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
-    """Handle /commission command."""
-    await update.message.reply_text("Our commission is 5% of each deal.")
+    """Handle /commission command with XLSX document."""
+    message = update.message
+    if not message or not message.document:
+        await message.reply_text("Please attach an XLSX file with the command.")
+        return
+
+    telegram_file = await message.document.get_file()
+    file_bytes = await telegram_file.download_as_bytearray()
+
+    try:
+        summary = calculate_commissions(file_bytes)
+    except Exception as exc:  # pylint: disable=broad-exception-caught
+        await message.reply_text(f"Failed to process file: {exc}")
+        return
+
+    await message.reply_text(summary)
 
 
 async def leaderboard(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
